@@ -33,3 +33,14 @@ python manage.py createdb
 python manage.py runserver
 ```
 Development server should start at http://127.0.0.1:8000/
+
+### Modifying templates
+```
+python manage.py collecttemplates
+```
+This will create templates directory, which contains the editable
+default templates. You can modify them to affect the page
+layouts. Only modified templates should be included in git.
+If a template is missing, the default one from Mezzanine is
+used.
+
