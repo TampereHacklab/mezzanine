@@ -1,10 +1,19 @@
-body { padding-top: 0px; }
 
+body { 
+  padding-top: 0px; 
+/*
+  color: #fff;
+  background-color: #000;
+*/
+}
 .navbar-default {
-  background-image: linear-gradient(to bottom, #ff0 0%, #dd0 100%);
+  background-image: linear-gradient(to bottom, #FD3 0%, #FFCC1F 3%, #FFCC1F 90%, #a90 100%);
 }
 .navbar-default .navbar-brand {
   color: #000;
+}
+.navbar-text {
+  color: #000 !important;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -12,5 +21,11 @@ body { padding-top: 0px; }
   color: #000;
   background-color: #cc0;
 }
-
-
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+}
+/*
+.breadcrumb {
+  background-color: #111111;
+}
+*/
