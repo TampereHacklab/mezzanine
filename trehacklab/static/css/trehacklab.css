@@ -2,6 +2,7 @@
 body { 
   padding-top: 0px; 
 /*
+  TODO: Black background to match our color style.
   color: #fff;
   background-color: #000;
 */
@@ -24,8 +25,4 @@ body {
 .navbar-default .navbar-nav > li > a {
   color: #000;
 }
-/*
-.breadcrumb {
-  background-color: #111111;
-}
-*/
+
