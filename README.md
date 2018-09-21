@@ -1,6 +1,26 @@
 # mezzanine
 Tampere Hacklab's Mezzanine CMS (aka web pages)
 
+## Docker ##
+
+```
+git clone https://github.com/TampereHacklab/mezzanine.git
+cd mezzanine
+(Copy settings template to `trehacklab/trehacklab/local_settings.py`, described below)
+docker image build -t mezzanine:latest .
+docker run -d -p 8000:8000 --name mezzanine mezzanine:latest
+```
+
+### To run in your dev environment (empty database) ###
+
+```
+docker exec -it mezzanine bash -c "source virtualenv/bin/activate && cd trehacklab && python3 manage.py createdb && python3 manage.py runserver 0.0.0.0:8000"
+```
+
+### To run in existing environment (hacklab's database) ###
+
+TODO
+
 ### Getting started with local environment
 
 Clone the repo and initialize virtualenv
@@ -12,12 +32,12 @@ source virtualenv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-Copy basic settings to `trehacklab/trehacklab/local_settings.py`:
+Copy settings template to `trehacklab/trehacklab/local_settings.py`:
 
 ```
 DEBUG = True
 SECRET_KEY = "asdfasdfsecretasdfasdf"
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     "default": {
