@@ -1,4 +1,5 @@
 # mezzanine
+
 Tampere Hacklab's Mezzanine CMS (aka web pages)
 
 ## Docker ##
@@ -14,7 +15,7 @@ docker run -d -p 8000:8000 --name mezzanine mezzanine:latest
 ### To run in your dev environment (empty database) ###
 
 ```
-docker exec -it mezzanine bash -c "source virtualenv/bin/activate && cd trehacklab && python3 manage.py createdb && python3 manage.py runserver 0.0.0.0:8000"
+docker exec -it mezzanine bash -c "cd trehacklab && python3 manage.py createdb && python3 manage.py runserver 0.0.0.0:8000"
 ```
 
 ### To run in existing environment (hacklab's database) ###

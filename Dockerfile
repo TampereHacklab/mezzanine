@@ -1,10 +1,15 @@
 FROM debian:buster-slim
+
 ENV DEBIAN_FRONTEND noninteractive
 
+# Workaround for bug in debian - remove when possible!
+RUN mkdir -p /usr/share/man/man1
+RUN touch /usr/share/man/man1/sh.distrib.1.gz
+# end workaround
+
 RUN apt update
-# disabled due to bug in dash
-#RUN apt -y dist-upgrade
-RUN apt -y install virtualenv python3-pip locales libldap2-dev libsasl2-dev
+RUN apt -y dist-upgrade
+RUN apt -y install python3-pip locales libldap2-dev libsasl2-dev
 
 # Locale related
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
@@ -15,10 +20,7 @@ ENV LC_ALL en_US.UTF-8
 
 ADD . /mezzanine
 WORKDIR /mezzanine
-RUN virtualenv -p python3 virtualenv
-RUN /bin/bash -c "source virtualenv/bin/activate && \
-  cd trehacklab && \
-  pip3 install -r requirements.txt"
+RUN pip3 install -r trehacklab/requirements.txt
 
 CMD sleep 999d
 
