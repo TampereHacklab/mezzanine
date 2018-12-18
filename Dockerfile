@@ -22,5 +22,5 @@ ADD . /mezzanine
 WORKDIR /mezzanine
 RUN pip3 install -r trehacklab/requirements.txt
 
-CMD sleep 999d
+ENTRYPOINT bash -c "cd trehacklab && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
 
