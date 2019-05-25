@@ -12,6 +12,8 @@ docker image build -t mezzanine:latest .
 docker run -d -p 8000:8000 --name mezzanine mezzanine:latest
 ```
 
+Mezzanine should now run at http://localhost:8000/
+
 ### To run in your dev environment (empty database) ###
 
 ```
