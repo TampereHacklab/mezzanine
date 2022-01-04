@@ -233,7 +233,8 @@ if DJANGO_VERSION < (1, 9):
 ################
 # APPLICATIONS #
 ################
-
+import sys
+sys.modules['fontawesome_free'] = __import__('fontawesome-free')
 INSTALLED_APPS = (
     "django.contrib.admin",
     "django.contrib.auth",
@@ -253,6 +254,7 @@ INSTALLED_APPS = (
     "mezzanine.blog",
     "mezzanine.forms",
     "mezzanine.galleries",
+    "fontawesome_free"
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

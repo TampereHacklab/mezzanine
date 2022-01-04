@@ -56,3 +56,7 @@ a[href*="//"]:not([href*="//tampere.hacklab.fi"]):after {
 	background: no-repeat var(--icon-external-link);
 	padding-right: 1em;
 }
+/* remove external link styling from footer some icons */
+footer div.somelinks a:after {
+	background: none !important;
+}

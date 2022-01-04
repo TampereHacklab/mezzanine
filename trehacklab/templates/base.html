@@ -45,6 +45,7 @@
 <![endif]-->
 
 {% block extra_head %}{% endblock %}
+<link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
@@ -64,7 +65,9 @@
     {% endblock%}
 </div>
 <div class="navbar-collapse collapse">
+    {% comment "No real need for search" %}
     {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
+    {% endcomment %}
     {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
 </div>
 </div>
@@ -87,27 +90,32 @@
 
 <h1>{% block title %}{% endblock %}</h1>
 
+{% comment "No real need for breadcrumbs" %}
 <ul class="breadcrumb">
 {% spaceless %}
 {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
 {% endspaceless %}
 </ul>
+{% endcomment %}
 
 </div>
 
 <div class="container">
 <div class="row">
 
+{% comment "hide left column, and widen the middle column" %}
 <div class="col-md-2 left">
     {% block left_panel %}
     <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
     {% endblock %}
 </div>
+{% endcomment %}
 
-<div class="col-md-7 middle">
+<div class="col-md-12 middle">
     {% block main %}{% endblock %}
 </div>
 
+{% comment "hide right column, and widen the middle column" %}
 <div class="col-md-3 right">
     {% nevercache %}
     {% include "includes/language_selector.html" %}
@@ -123,12 +131,57 @@
     </div>
     </div>
 </div>
+{% endcomment %}
 
 </div>
 </div>
 
 <footer>
 <div class="container">
+
+    <div class="row somelinks">
+        <div class="col-xs-4 col-sm-1">
+            <a href="https://wiki.tampere.hacklab.fi/palvelut#pikaviestinkanavat" target="_blank" title="chat">
+                <i class="fas fa-comments fa-3x"></i>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-1">
+            <a href="https://discourse.hacklab.fi/" target="_blank" title="discourse">
+                <i class="fab fa-discourse fa-3x"></i>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-1">
+            <a href="https://twitter.com/trehacklab" target="_blank" title="twitter">
+                <i class="fab fa-twitter fa-3x"></i>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-1">
+            <a href="https://www.facebook.com/groups/Tampere-Hacklab/" target="_blank" title="facebook">
+                <i class="fab fa-facebook fa-3x"></i>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-1">
+            <a href="https://www.instagram.com/tampere.hacklab.fi/" target="_blank" title="instagram">
+                <i class="fab fa-instagram fa-3x"></i>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-1">
+            <a href="https://github.com/TampereHacklab" target="_blank" title="github">
+                <i class="fab fa-github fa-3x"></i>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-1">
+            <a href="https://www.youtube.com/channel/UCPRwItBuFcU2yqsZGIXJucw" target="_blank" title="youtube">
+                <i class="fab fa-youtube fa-3x"></i>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-1">
+            <a href="https://qoto.org/@tamperehacklab/" target="_blank" title="mastodon">
+                <i class="fab fa-mastodon fa-3x"></i>
+            </a>
+        </div>
+    </div>
+
 {% page_menu "pages/menus/footer.html" %}
 
 <div class="row">
