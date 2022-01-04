@@ -59,6 +59,15 @@ body {
 }
 */
 
+.koronainfo {
+	border: 5px dashed #FFCC1F;
+	margin-bottom: 1em;
+	padding: 2em;
+}
+.koronainfo h2 {
+	margin-top: 0;
+}
+
 footer {
 	background-color: #f9fb4c;
 	background-image: none;
