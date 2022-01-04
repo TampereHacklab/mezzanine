@@ -60,12 +60,17 @@
         <span class="icon-bar"></span>
     </button>
     {% block navbar_title %}
-    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">
+        <img src="{% static "img/logo.png" %}" alt="{{ settings.SITE_TITLE }}" style="height: 30px;">
+    </a>{% endif %}
     {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
     {% endblock%}
 </div>
 <div class="navbar-collapse collapse">
-    {% comment "No real need for search" %}
+    <ul class="nav navbar-right">
+        <li class="mulysa"><a href="https://my.tampere.hacklab.fi" target="_blank" title="jäsenrekisteri"><i class="fas fa-user-circle fa-2x"></i></a></li>
+    </ul>
+    {% comment "No real need for search, make room for link to mulysa" %}
     {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
     {% endcomment %}
     {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
@@ -139,8 +144,8 @@
 <footer>
 <div class="container">
 
-    <div class="row somelinks">
-        <div class="col-xs-4 col-sm-1">
+    <div class="row somelinks row-top-margin">
+        <div class="col-xs-4 col-sm-1 col-sm-offset-2">
             <a href="https://wiki.tampere.hacklab.fi/palvelut#pikaviestinkanavat" target="_blank" title="chat">
                 <i class="fas fa-comments fa-3x"></i>
             </a>
@@ -182,10 +187,23 @@
         </div>
     </div>
 
+{% comment "hide right column, and widen the middle column" %}
 {% page_menu "pages/menus/footer.html" %}
+{% endcomment %}
 
-<div class="row">
-<p class="site-info text-center">
+<div class="row row-top-margin">
+    <p class="text-center">
+        <a href="/pages/yhdistys/yhteystiedot">Yhteystiedot</a>
+    </p>
+    <p class="text-center">
+        <a href="/pages/mistä-meidät-löytää/">Ahlmanintie 56, Tampere</a>
+        <a href="tel:+358 93157 6905">+358 93157 6905</a>
+        <a href="mailto:info@tampere.hacklab.fi">info@tampere.hacklab.fi</a>
+    </p>
+    <p class="text-center">
+        Tampere Hacklab is a part of the Finnish hacklab community, read more at <a href="https://hacklab.fi" target="_blank">hacklab.fi</a>
+    </p>
+    <p class="site-info text-center">
     {% trans "Powered by" %}
     <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
     <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
