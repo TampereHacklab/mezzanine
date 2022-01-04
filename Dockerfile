@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
 RUN apt -y dist-upgrade
-RUN apt -y install python3-pip locales libldap2-dev libsasl2-dev zlib1g-dev libjpeg-dev
+RUN apt -y install python3-pip locales libldap2-dev libsasl2-dev zlib1g-dev libjpeg-dev git
 
 # Locale related
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
