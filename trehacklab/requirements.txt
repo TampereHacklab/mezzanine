@@ -1,4 +1,2 @@
-# TODO: when mezzanine 5.0.1 is released use that instead
-#Mezzanine==5.0.1
-git+https://github.com/stephenmcd/mezzanine@master
+Mezzanine==5.1.0
 fontawesome-free==5.15.4
