@@ -269,6 +269,7 @@ SOCIALACCOUNT_PROVIDERS = {
     'keycloak': {
         'KEYCLOAK_URL': 'https://sso.hacklab.fi/auth',
         'KEYCLOAK_REALM': 'tampere',
+        'OVERRIDE_NAME': 'Hacklab SSO',
     }
 }
 SOCIALACCOUNT_AUTO_SIGNUP = True
