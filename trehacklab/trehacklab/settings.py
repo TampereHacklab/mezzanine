@@ -129,7 +129,11 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = False
 
-AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
+AUTHENTICATION_BACKENDS = [
+    "mezzanine.core.auth_backends.MezzanineBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
 
 # The numeric mode to set newly-uploaded files to. The value should be
 # a mode you'd pass directly to os.chmod.
@@ -254,8 +258,23 @@ INSTALLED_APPS = (
     "mezzanine.blog",
     "mezzanine.forms",
     "mezzanine.galleries",
-    "fontawesome_free"
+    "fontawesome_free",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.keycloak",
 )
+
+SOCIALACCOUNT_PROVIDERS = {
+    'keycloak': {
+        'KEYCLOAK_URL': 'https://sso.hacklab.fi/auth',
+        'KEYCLOAK_REALM': 'tampere',
+    }
+}
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_ADAPTER = "trehacklab.adapters.DisableSignUpAccountAdapter"
+SOCIALACCOUNT_ADAPTER = 'trehacklab.adapters.SocialAccountToStaffAdapter'
 
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
