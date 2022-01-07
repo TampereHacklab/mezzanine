@@ -1,0 +1,36 @@
+{% extends "admin/includes_grappelli/header.html" %}
+{% load i18n %}
+
+{% block userlinks %}
+        <!-- Documentation -->
+        {% url "django-admindocs-docroot" as docsroot %}
+        {% if docsroot %}
+        <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
+        {% endif %}
+        <!-- Change Password -->
+
+        {% comment hide change_password link %}
+        <!--
+                remove grappelli original password change link
+                there is no cleanly get this out. should probably do a few more
+                pr:s to mezzanine and grappelli-safe so that they could use the
+                user.has_usable_password
+        -->
+        {% url "admin:password_change" as password_change_url %}
+        {% if password_change_url %}
+        <li><a href="{{ password_change_url }}">
+        {% else %}
+        <li><a href="{{ root_path }}password_change/">
+        {% endif %}
+        {% trans 'Change password' %}</a></li>
+        {% endcomment %}
+
+        <!-- Logout -->
+        {% url "admin:logout" as logout_url %}
+        {% if logout_url %}
+        <li><a href="{{ logout_url }}">
+        {% else %}
+        <li><a href="{{ root_path }}logout/">
+        {% endif %}
+        {% trans 'Log out' %}</a></li>
+{% endblock %}
