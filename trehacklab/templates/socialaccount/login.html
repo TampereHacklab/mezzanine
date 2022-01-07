@@ -1,0 +1,44 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% load account socialaccount %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static settings.MEZZANINE_ADMIN_PREFIX|add:"css/login.css" %}">
+{{ block.super }}
+<link rel="stylesheet" href="{% static "mezzanine/chosen/chosen.css" %}">
+<link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static "mezzanine/chosen/chosen-0.9.12.jquery.js" %}"></script>
+<script> jQuery(function($) {$('select').chosen();}); </script>
+{% endblock %}
+
+{% block bodyclass %}login{% endblock %}
+{% block content_title %}{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div style="margin-top: 100px; text-align: center;">
+
+
+{% comment lets make a simpler text %}
+{% if process == "connect" %}
+<h1>{% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}</h1>
+
+<p>{% blocktrans with provider.name as provider %}You are about to connect a new third party account from {{ provider }}.{% endblocktrans %}</p>
+{% else %}
+<h1>{% blocktrans with provider.name as provider %}Sign In Via {{ provider }}{% endblocktrans %}</h1>
+
+<p>{% blocktrans with provider.name as provider %}You are about to sign in using a third party account from {{ provider }}.{% endblocktrans %}</p>
+{% endif %}
+{% endcomment %}
+
+<p>{% trans "Please wait" %}</p>
+
+<form method="post" style="visibility: hidden">
+  {% csrf_token %}
+  <button type="submit" id="submitbutton">{% trans "Continue" %}</button>
+</form>
+<script type="text/javascript">
+    document.getElementById('submitbutton').click();
+</script>
+</div>
+{% endblock %}
