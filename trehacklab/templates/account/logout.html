@@ -1,0 +1,34 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% load account socialaccount %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static settings.MEZZANINE_ADMIN_PREFIX|add:"css/login.css" %}">
+{{ block.super }}
+<link rel="stylesheet" href="{% static "mezzanine/chosen/chosen.css" %}">
+<link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static "mezzanine/chosen/chosen-0.9.12.jquery.js" %}"></script>
+<script> jQuery(function($) {$('select').chosen();}); </script>
+{% endblock %}
+
+{% block bodyclass %}logout{% endblock %}
+{% block content_title %}{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+<h1>{% trans 'Please wait' %}</h1>
+
+<form method="post" action="{% url 'account_logout' %}" style="visibility: hidden;">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button type="submit" id="submitbutton">{% trans 'Sign Out' %}</button>
+</form>
+</div>
+<script type="text/javascript">
+    document.getElementById('submitbutton').click();
+</script>
+{% endblock %}

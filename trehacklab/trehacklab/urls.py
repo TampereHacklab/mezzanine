@@ -1,9 +1,11 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.urls import re_path, path
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.views.i18n import set_language
+from django.views.generic.base import RedirectView
 
 from mezzanine.core.views import direct_to_template
 from mezzanine.blog import views as blog_views
@@ -16,15 +18,22 @@ admin.autodiscover()
 # You can also change the ``home`` view to add your own functionality
 # to the project's homepage.
 
-urlpatterns = i18n_patterns(
+# keep allauth first, this is needed for the redirect and others
+urlpatterns = [
+    path('accounts/', include('allauth.urls')),
+    path('admin/login/', RedirectView.as_view(url='/accounts/login/?next=/admin/')),
+    path('admin/logout/', RedirectView.as_view(url='/accounts/logout')),
+]
+
+urlpatterns += i18n_patterns(
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
-    url("^admin/", include(admin.site.urls)),
+    re_path("^admin/", include(admin.site.urls)),
 )
 
 if settings.USE_MODELTRANSLATION:
     urlpatterns += [
-        url('^i18n/$', set_language, name='set_language'),
+        re_path('^i18n/$', set_language, name='set_language'),
     ]
 
 urlpatterns += [
@@ -65,7 +74,7 @@ urlpatterns += [
     # page tree in the admin if it was installed.
     # NOTE: Don't forget to import the view function too!
 
-    url("^$", blog_views.blog_post_list, name="home"),
+    re_path("^$", blog_views.blog_post_list, name="home"),
 
     # MEZZANINE'S URLS
     # ----------------
@@ -78,7 +87,7 @@ urlpatterns += [
     # ``mezzanine.urls``, go right ahead and take the parts you want
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
-    url("^", include("mezzanine.urls")),
+    re_path("^", include("mezzanine.urls")),
 
     # MOUNTING MEZZANINE UNDER A PREFIX
     # ---------------------------------
@@ -95,6 +104,9 @@ urlpatterns += [
     # need to use the ``SITE_PREFIX`` setting as well.
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+
+
+
 
 ]
 
