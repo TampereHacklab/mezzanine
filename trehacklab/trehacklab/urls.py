@@ -21,7 +21,6 @@ admin.autodiscover()
 # keep allauth first, this is needed for the redirect and others
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
-    path('admin/login/', RedirectView.as_view(url='/accounts/login/?next=/admin/')),
     path('admin/logout/', RedirectView.as_view(url='/accounts/logout')),
 ]
 
