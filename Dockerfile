@@ -18,4 +18,4 @@ RUN pip3 install -r trehacklab/requirements.txt
 
 COPY . /mezzanine
 
-ENTRYPOINT bash -c "cd trehacklab && python3 manage.py migrate && python3 manage.py collectstatic --noinput && python3 -u manage.py runserver 0.0.0.0:8000 --noreload"
+ENTRYPOINT bash -c "cd trehacklab && python3 manage.py migrate ;; python3 manage.py collectstatic --noinput && python3 -u manage.py runserver 0.0.0.0:8000 --noreload"
