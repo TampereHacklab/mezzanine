@@ -61,7 +61,7 @@
     </button>
     {% block navbar_title %}
     {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">
-        <img src="{% static "img/logo.png" %}" alt="{{ settings.SITE_TITLE }}" style="height: 30px;">
+        <img src="{% static "img/logo.svg" %}" alt="{{ settings.SITE_TITLE }}" />
     </a>{% endif %}
     {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
     {% endblock%}
