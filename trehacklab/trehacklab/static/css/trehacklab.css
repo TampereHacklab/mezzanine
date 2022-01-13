@@ -118,6 +118,24 @@ li.mulysa a:hover {
 }
 /* remove external link styling from footer some icons */
 footer div.somelinks a:after,
+footer div.sponsors a:after,
 li.mulysa a:after {
 	background: none !important;
+}
+
+footer div.sponsors {
+	background-color: white;
+	border-radius: 1em;
+	padding-top: 1em;
+	padding-bottom: 1em
+}
+footer div.sponsorslabel h4 {
+	font-size: 30px;
+	text-align: center;
+	margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+footer div.sponsors p {
+	text-align: center !important;
 }
