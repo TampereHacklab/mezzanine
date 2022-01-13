@@ -8,9 +8,10 @@ body {
 */
 }
 .navbar-default {
-	background-color: #f9fb4c;
-	background-image: none;
+/*	background-color: #f9fb4c; */
+/*	background-image: none; */
 /*	background-image: linear-gradient(to bottom, #FD3 0%, #FFCC1F 3%, #FFCC1F 90%, #a90 100%);*/
+    background-image: linear-gradient(to bottom, #FFCC1F 0%, #FFCC1F 97%, black 100%);
 }
 .navbar-default .navbar-brand {
   padding: 5px;
@@ -33,9 +34,14 @@ body {
 .navbar-default .navbar-nav > .open > a:focus,
 .nav > li > a:hover, .nav > li > a:focus,
 .nav > li > a.dropdown-toggle:hover {
+/*
   color: #000;
   background-color: #cc0;
+*/
   background-image: none;
+
+  color: #dbdbdb;
+  background-color: #1a1a1a;
 }
 
 .row-top-margin {
@@ -76,8 +82,13 @@ body {
 }
 
 footer {
+/*
+	border-top: 1px solid black;
+	*/
 	background-color: #f9fb4c;
-	background-image: none;
+	background-image: linear-gradient(to bottom, black 0%, #FFCC1F 3px, #FFCC1F 100%);
+/*	background-color: #FFCC1F;*/
+/*	background-image: none; */
 }
 
 footer a {
