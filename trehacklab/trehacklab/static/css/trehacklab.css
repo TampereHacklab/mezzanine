@@ -59,7 +59,7 @@ body {
 	color: black;
 }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-    background-color: #f9fb4c;
+    background-color: #FFCC1F;
 }
 
 .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
@@ -85,7 +85,7 @@ footer {
 /*
 	border-top: 1px solid black;
 	*/
-	background-color: #f9fb4c;
+/*	background-color: #f9fb4c;*/
 	background-image: linear-gradient(to bottom, black 0%, #FFCC1F 3px, #FFCC1F 100%);
 /*	background-color: #FFCC1F;*/
 /*	background-image: none; */
