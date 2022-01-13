@@ -23,6 +23,7 @@ body {
 .navbar-text {
   color: #000 !important;
   font-size: 14px;
+  margin-top: 13px;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
