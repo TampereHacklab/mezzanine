@@ -48,6 +48,10 @@ body {
   color: black;
 }
 
+.middle img {
+	height: auto;
+}
+
 .pagination > li > a:hover,
 .pagination > li > span:hover,
 .pagination > li > a:focus,
