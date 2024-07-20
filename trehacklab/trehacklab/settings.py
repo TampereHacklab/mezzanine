@@ -267,7 +267,7 @@ INSTALLED_APPS = (
 
 SOCIALACCOUNT_PROVIDERS = {
     'keycloak': {
-        'KEYCLOAK_URL': 'https://sso.hacklab.fi/auth',
+        'KEYCLOAK_URL': 'https://sso.hacklab.fi',
         'KEYCLOAK_REALM': 'tampere',
         'OVERRIDE_NAME': 'Hacklab SSO',
     }
