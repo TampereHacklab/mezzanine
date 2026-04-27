@@ -193,11 +193,11 @@ STATICFILES_DIRS = [
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = STATIC_URL + "media/"
+MEDIA_URL = "/media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, MEDIA_URL.strip("/"))
 
 # Package/module name to import the root urlpatterns from for the project.
 ROOT_URLCONF = "%s.urls" % PROJECT_APP
@@ -262,14 +262,22 @@ INSTALLED_APPS = (
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "allauth.socialaccount.providers.keycloak",
+    "allauth.socialaccount.providers.openid_connect",
 )
 
 SOCIALACCOUNT_PROVIDERS = {
-    'keycloak': {
-        'KEYCLOAK_URL': 'https://sso.hacklab.fi',
-        'KEYCLOAK_REALM': 'tampere',
-        'OVERRIDE_NAME': 'Hacklab SSO',
+    "openid_connect": {
+        "SERVERS": [
+            {
+                "id": "keycloak",
+                "name": "Hacklab SSO",
+                "server_url": "https://sso.hacklab.fi/realms/tampere",
+                "APP": {
+                    "client_id": "",
+                    "secret": "",
+                },
+            }
+        ]
     }
 }
 SOCIALACCOUNT_AUTO_SIGNUP = True
@@ -298,6 +306,7 @@ MIDDLEWARE = (
     "mezzanine.core.middleware.SitePermissionMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 )
 
 # Store these package names here as they may change in the future since
