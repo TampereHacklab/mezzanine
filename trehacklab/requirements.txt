@@ -1,3 +1,5 @@
-Mezzanine==5.1.0
+Mezzanine==6.1.1
 fontawesome-free==5.15.4
-django-allauth==0.47.0
+django-allauth[openid_connect]==65.16.1
+PyJWT==2.10.1
+cryptography==44.0.3

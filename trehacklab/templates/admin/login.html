@@ -12,13 +12,11 @@
 
     <h1>{% trans "Login with:" %}</h1>
     {% for provider in socialaccount_providers %}
-    {% if provider.id != "openid" %}
       <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} btn btn-primary" style="font-size:150%;"
         href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
         <i class="fas fa-sign-in-alt"></i>
         {{provider.name}}
         </a>
-    {% endif %}
     {% endfor %}
   </div>
 
