@@ -265,21 +265,6 @@ INSTALLED_APPS = (
     "allauth.socialaccount.providers.openid_connect",
 )
 
-SOCIALACCOUNT_PROVIDERS = {
-    "openid_connect": {
-        "SERVERS": [
-            {
-                "id": "keycloak",
-                "name": "Hacklab SSO",
-                "server_url": "https://sso.hacklab.fi/realms/tampere",
-                "APP": {
-                    "client_id": "",
-                    "secret": "",
-                },
-            }
-        ]
-    }
-}
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_ADAPTER = "trehacklab.adapters.DisableSignUpAccountAdapter"
