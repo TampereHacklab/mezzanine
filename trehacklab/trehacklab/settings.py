@@ -176,6 +176,14 @@ PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
 # project specific.
 CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_APP
 
+if DJANGO_VERSION[:2] > (4, 2):
+    # Default File Storage - needed by Filebrowser Safe, as it's been
+    # removed in Django 5.1 (deprecated in 4.2)
+    # Filebrowser safe will add a mixin to this class to perform certain
+    # filesystem behaviour that its code uses, and so we define this to replace
+    # the definition removed in Django itself.
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = "/static/"
